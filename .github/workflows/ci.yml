@@ -13,7 +13,7 @@ jobs:
         name: earnestresearch-public
         signingKey: '${{ secrets.EARNESTRESEARCH_PUBLIC_CACHIX_SIGNING_KEY }}'
     - run: cachix use earnestresearch-public
-    - run: nix-build ./shell.nix -A okta-aws-login.components.exes
+    - run: nix-build -A okta-aws-login.components.exes
     - run: ./result/bin/okta-aws-login --help
     - run: nix-shell ./shell.nix --run "pre-commit run --all-files --show-diff-on-failure --color never"
     - run: nix-build ./shell.nix -A okta-aws-login-tests
