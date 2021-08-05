@@ -7,9 +7,7 @@ Older static binary [Releases](https://github.com/EarnestResearch/okta-aws-login
 
 # Install
 
-```shell
-$ nix-env -f https://github.com/EarnestResearch/er-nix/archive/master.tar.gz -iA pkgs.okta-aws-login
-```
+See [releases](https://github.com/andreyk0/okta-aws-login/releases) for available binaries.
 
 Initially this tool needs to be configured, you need to know:
    - Okta "embed" link for your AWS account
@@ -81,8 +79,14 @@ Skip ECR login (note that you can set default behavior in the config file)
 
 # Development
 
-To build it from source you need [nix](https://nixos.org/download.html) package manager.
-[Direnv](https://nixos.wiki/wiki/Development_environment_with_nix-shell) is recommended (but you can also just launch `nix-shell` manually in the project's directory).
+Build from source with [Haskell stack](https://docs.haskellstack.org/en/stable/README/#how-to-install)
+
+Build statically linked linux binaries with [static-haskell-nix](https://github.com/nh2/static-haskell-nix/).
+
+``` bash
+make build-linux-static
+```
+
 
 Okta [API](http://developer.okta.com/docs/api/resources/authn.html).
 

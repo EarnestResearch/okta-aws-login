@@ -1,19 +1,16 @@
-default: hpack test lint
-
-hpack:
-	hpack
+default: test
 
 build:
-	cabal new-build
+	stack build
 
 test:
-	cabal new-test
-
-lint:
-	hlint src app test
+	stack test
 
 clean:
-	cabal clean
+	stack clean
+
+build-linux-static:
+	$$(nix-build --no-link -A fullBuildScript)
 
 .PHONY: \
 	build \

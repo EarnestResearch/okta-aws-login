@@ -4,10 +4,10 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 74bcf7b5ac72955e2459d4d247ae5eac04619b3e0e1bd18430d96a1c36753593
+-- hash: 25977a3aa346c61c18d595a76d331ff276c7b6b027e25f7c3db5a910f744b567
 
 name:           okta-aws-login
-version:        0.1.0.0
+version:        0.1.0.1
 synopsis:       CLI to login to AWS accounts with Okta SSO.
 description:    Please see README.md
 category:       Web
