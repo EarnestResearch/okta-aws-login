@@ -1,6 +1,8 @@
 name: CD Linux
 
-on: push
+on:
+  release:
+    types: [published]
 
 jobs:
   build:
@@ -14,5 +16,6 @@ jobs:
       - uses: cachix/install-nix-action@v13
         with:
           nix_path: nixpkgs=channel:nixos-unstable
+      - run: cachix use static-haskell-nix
       - run: $(nix-build --no-link -A fullBuildScript) > output
       - run: cp -v $(cat output)/bin/okta-aws-login ./okta-aws-login-Linux-x86_64
