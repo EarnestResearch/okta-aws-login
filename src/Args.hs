@@ -10,7 +10,6 @@ module Args (
 
 import           Data.Functor
 import qualified Data.Text as T
-import           Development.GitRev
 import           Network.AWS.Data.Text
 import           Network.AWS.Prelude (Natural)
 import           Network.AWS.Types
@@ -19,6 +18,7 @@ import           System.Directory
 import           System.FilePath
 import qualified Text.PrettyPrint.ANSI.Leijen as PP
 import           Types
+import           Paths_okta_aws_login
 
 
 -- | Arguments used for main (login to AWS) functionality
@@ -54,7 +54,7 @@ data Command = Configure ConfigArgs
 parseArgs :: FilePath
           -> Parser Args
 parseArgs defConf =
-  (infoOption ("Version: " <> $(gitBranch) <> "@" <> $(gitHash))
+  (infoOption ("Version: " <> show version)
               (long "version" <> short 'V' <> help "Print version and exit.") <*> pure Args)
   <*> switch
       ( long "verbose"

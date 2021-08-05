@@ -35,7 +35,6 @@ dependencies:
   - directory
   - exceptions
   - filepath
-  - gitrev
   - http-client
   - http-conduit
   - http-types
