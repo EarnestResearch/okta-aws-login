@@ -1,10 +1,10 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.34.2.
+-- This file has been generated from package.yaml by hpack version 0.34.4.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 57a58e111b0284ceaee6bcf15e7a708147751bc7ceb7858465995f2752d3621f
+-- hash: 74bcf7b5ac72955e2459d4d247ae5eac04619b3e0e1bd18430d96a1c36753593
 
 name:           okta-aws-login
 version:        0.1.0.0
@@ -21,11 +21,6 @@ build-type:     Simple
 data-files:
     data/test-config-current-json-format.json
     data/test-config-old-json-format.json
-
-flag use-build-tools
-  description: stupid hack to run tests locally
-  manual: True
-  default: True
 
 library
   exposed-modules:
@@ -149,6 +144,8 @@ test-suite okta-aws-login-test
   hs-source-dirs:
       test
   ghc-options: -Wall -Werror -threaded
+  build-tool-depends:
+      hspec-discover:hspec-discover
   build-depends:
       HUnit
     , aeson
@@ -194,7 +191,4 @@ test-suite okta-aws-login-test
     , utf8-string
     , xml-conduit
     , xml-lens
-  if flag(use-build-tools)
-    build-tool-depends:
-        hspec-discover:hspec-discover
   default-language: Haskell2010
