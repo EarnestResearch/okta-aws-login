@@ -43,3 +43,27 @@ jobs:
       - uses: softprops/action-gh-release@v1
         with:
           files: okta-aws-login-Linux-x86_64
+  macos-binary:
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: haskell/actions/setup@v1
+        with:
+          ghc-version: '8.10.4'
+          enable-stack: true
+          stack-version: 'latest'
+      - uses: actions/cache@v2
+        env:
+          cache-name: cache-stack
+        with:
+          path: ~/.stack
+          key: ${{ runner.os }}-stack-${{ env.cache-name }}-${{ hashFiles('**/stack.yaml', '**/stack.yaml.lock', 'package.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-stack-${{ env.cache-name }}-
+      - run: stack --local-bin-path . install
+      - run: otool -L okta-aws-login
+      - run: mv -v okta-aws-login ./okta-aws-login-MacOS-x86_64
+      - uses: softprops/action-gh-release@v1
+        with:
+          files: okta-aws-login-MacOS-x86_64
