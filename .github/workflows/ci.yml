@@ -61,7 +61,7 @@ jobs:
           key: ${{ runner.os }}-stack-${{ env.cache-name }}-${{ hashFiles('**/stack.yaml', '**/stack.yaml.lock', 'package.yaml') }}
           restore-keys: |
             ${{ runner.os }}-stack-${{ env.cache-name }}-
-      - run: stack --local-bin-path . install
+      - run: stack --system-ghc --local-bin-path . install
       - run: otool -L okta-aws-login
       - run: mv -v okta-aws-login ./okta-aws-login-MacOS-x86_64
       - uses: softprops/action-gh-release@v1
