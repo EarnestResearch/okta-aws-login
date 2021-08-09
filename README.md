@@ -102,3 +102,12 @@ make build-linux-static
 Okta [API](http://developer.okta.com/docs/api/resources/authn.html).
 
 Okta official CLI [inspiration](https://github.com/oktadeveloper/okta-aws-cli-assume-role)
+
+
+# Release
+
+To release
+
+* Update version X.Y.Z field in the [package.yaml](./package.yaml)
+* `git tag vX.Y.Z`
+* push changes and the tag, this should trigger a GH Actions build
