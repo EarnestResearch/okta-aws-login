@@ -40,7 +40,7 @@ jobs:
           name: static-haskell-nix
       - run: $(nix-build --no-link -A fullBuildScript) > output
       - run: cp -v $(cat output)/bin/okta-aws-login ./okta-aws-login-Linux-x86_64
-      - uses: softprops/action-gh-release@v0.1.7
+      - uses: softprops/action-gh-release@v1
         with:
           files: okta-aws-login-Linux-x86_64
   macos-binary:
@@ -64,6 +64,6 @@ jobs:
       - run: stack --system-ghc --local-bin-path . install
       - run: otool -L okta-aws-login
       - run: mv -v okta-aws-login ./okta-aws-login-MacOS-x86_64
-      - uses: softprops/action-gh-release@v0.1.7
+      - uses: softprops/action-gh-release@v1
         with:
           files: okta-aws-login-MacOS-x86_64
